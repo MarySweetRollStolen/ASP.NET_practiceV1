@@ -1,0 +1,12 @@
+﻿@*@using asp_pract.Service*@
+@model TextField
+@{
+    ViewBag.Title = Model.MetaTitle;
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.Keywords = Model.MetaKeywords;
+}
+<title>@Config.CompanyName</title>
+<div>
+    <h1>Main page index</h1>
+    @Html.Raw(Model.Text)
+</div>

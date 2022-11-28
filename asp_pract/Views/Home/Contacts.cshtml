@@ -1,0 +1,13 @@
+﻿
+@using asp_pract.Service
+@model TextField
+@{
+    ViewBag.Title = Model.MetaTitle;
+    ViewBag.Description = Model.MetaDescription;
+    ViewBag.Keywords = Model.MetaKeywords;
+}
+<title>@Config.CompanyName Contacts</title>
+<div>
+    <h1>Contacts here you are</h1>
+    @Html.Raw(Model.Text)
+</div>

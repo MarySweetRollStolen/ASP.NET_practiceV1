@@ -1,0 +1,60 @@
+﻿@model TextField
+@{
+    string strTitle = "Редагувати запис";
+    ViewBag.Title = strTitle;
+}
+
+<script src="~/js/ckeditor5-build-classic/ckeditor.js"></script>
+
+<div>
+    <h2>@strTitle</h2>
+    <div>
+        <form asp-area="Admin" asp-controller="TextFields" asp-action="Edit" method="post" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="DateAdded" />
+            <input type="hidden" asp-for="CodeWord" />
+
+            <div asp-validation-summary="All"></div>
+            <div class="form-loging-style">
+                <label asp-for="Title"></label>
+                <br />
+                <input asp-for="Title" />
+                <span asp-validation-for="Title"></span>
+            </div>
+            <div class="form-loging-style">
+                <label asp-for="Text"></label>
+                <br />
+                <textarea asp-for="Text" id="editor1" name="editor1" rows="30" cols="80"></textarea>
+                <span asp-validation-for="Text"></span>
+            </div>
+            <div class="form-loging-style">
+                <label asp-for="MetaTitle"></label>
+                <br />
+                <input asp-for="MetaTitle" />
+                <span asp-validation-for="MetaTitle"></span>
+            </div>
+            <div class="form-loging-style">
+                <label asp-for="MetaKeywords"></label>
+                <br />
+                <input asp-for="MetaKeywords" />
+                <span asp-validation-for="MetaKeywords"></span>
+            </div>
+            <input type="submit" value="Зберегти" />
+        </form>
+    </div>
+</div>
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor1'))
+        .catch(error => {
+            console.error(error);
+        });
+    @*window.onload = function () {
+        CKEDITOR.replace('editor1');
+        var newCKEditor = CKEDITOR.replace('@Html.IdFor(x => x.Text)');
+        newCKEditor.updateElement();
+    }*@
+
+</script>
+
