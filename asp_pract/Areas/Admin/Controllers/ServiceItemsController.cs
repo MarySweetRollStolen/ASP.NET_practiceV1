@@ -37,7 +37,7 @@ namespace asp_pract.Controllers
             {
                 if(titleImageFile != null)
                 {
-                    model.TitleImagePath = (string)titleImageFile.FileName;
+                    model.TitleImagePath = titleImageFile.FileName;
                     using (var stream = new FileStream(Path.Combine(hostingEnviroment.WebRootPath, "images/", titleImageFile.FileName), FileMode.Create))
                     {
                         titleImageFile.CopyTo(stream);

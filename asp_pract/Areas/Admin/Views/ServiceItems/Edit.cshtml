@@ -8,7 +8,7 @@
 <div>
     <h2>@strTitle</h2>
     <div>
-        <form asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" method="post" \="multipart/form-data">
+        <form asp-area="Admin" asp-controller="ServiceItems" asp-action="Edit" method="post" enctype="multipart/form-data">
             
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="DateAdded" />
@@ -38,7 +38,7 @@
                 <br />
                 <input type="file" name="titleImageFile" id="titleImageFile" />
                 <div>
-                    <img class="img-block" src="~/images/@Model.TitleImagePath" />
+                    <img src="~/images/@Model.TitleImagePath" class="img-block"/>
                 </div>
             </div>
             <div class="form-loging-style">

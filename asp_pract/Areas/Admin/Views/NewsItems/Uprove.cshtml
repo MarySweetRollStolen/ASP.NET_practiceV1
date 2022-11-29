@@ -13,7 +13,7 @@
 
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="DateAdded" />
-            @*<input type="hidden" asp-for="TitleImagePath" />*@
+            <input type="hidden" asp-for="TitleImagePath" />
 
 
             <div>
@@ -44,14 +44,14 @@
                 <span asp-validation-for="Text"></span>
             </div>
 
-            <!--<div class="form-loging-style">
+            <div class="form-loging-style">
                 <label asp-for="TitleImagePath"></label>
                 <br />
                 <input type="file" name="titleImageFile" id="titleImageFile" />
-                <div>-->
-                    @*<img class="img-block" src="~/images/@Model.TitleImagePath" alt="photo"/>*@
-                <!--</div>
-            </div>-->
+                <div>
+                    <img class="img-block" src="~/images/@Model.TitleImagePath" alt="photo"/>
+                </div>
+            </div>
 
             <div class="form-loging-style">
                 <label asp-for="MetaTitle"></label>

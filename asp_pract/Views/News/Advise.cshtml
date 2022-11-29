@@ -8,7 +8,7 @@
 <div>
     <h2>@strTitle</h2>
     <div>
-        <form asp-area="" asp-controller="News" asp-action="Advise" method="post" \="multipart/form-data">
+        <form asp-area="" asp-controller="News" asp-action="Advise" method="post" enctype="multipart/form-data">
 
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="DateAdded" />
@@ -41,11 +41,11 @@
                 <textarea asp-for="Text" name="Text" id="Text"></textarea>
                 <span asp-validation-for="Text"></span>
             </div>
-            @*<div class="form-loging-style">
+            <div class="form-loging-style">
             <label asp-for="TitleImagePath"></label>
             <br />
             <input type="file" name="titleImageFile" id="titleImageFile" />
-        </div>*@
+        </div>
 
             <input type="submit" value="Зберегти" />
         </form>

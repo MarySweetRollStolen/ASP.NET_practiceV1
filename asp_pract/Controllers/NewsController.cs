@@ -52,10 +52,11 @@ namespace asp_pract.Controllers
                         titleImageFile.CopyTo(stream);
                     }
                 }
+                model.UprovedByAdmin = false;
                 dataManager.NewsItems.SaveNewsItem(model);
                 return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
             }
-            return View(model);
+            return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
         }
 
         public IActionResult Privacy()
