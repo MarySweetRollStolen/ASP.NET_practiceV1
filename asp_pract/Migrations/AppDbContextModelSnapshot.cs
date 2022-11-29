@@ -49,7 +49,7 @@ namespace asp_pract.Migrations
                         new
                         {
                             Id = "9245fe4a-d402-451c-b9ed-9c1a04247482",
-                            ConcurrencyStamp = "7757c2e8-b17f-46e4-825f-fe0b1363f42b",
+                            ConcurrencyStamp = "ed97d02f-62b6-4267-a5fa-8f1289a03fa9",
                             Name = "admin",
                             NormalizedName = "ADMIN"
                         });
@@ -148,13 +148,13 @@ namespace asp_pract.Migrations
                         {
                             Id = "9245fe4a-d402-451c-b9ed-9c1a04247481",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "239b39e8-6511-43c4-a307-dabd527f11b6",
+                            ConcurrencyStamp = "516a6eb6-8b33-416e-bb26-2b78e2296ad9",
                             Email = "ny@mail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "MY@MAIL.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKZs6Uc7sKOt42afLVQvALwOBDpJL0Wb00ClDxsHRV2YJVAUQ7i2T10JwF3J9OWgIA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEOX/ABJURybWIFHzaSd2NnNfbflXjvZP6yF11d7cnt/QWsMYRdEpq2G78F4sNBVH5w==",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
                             TwoFactorEnabled = false,
@@ -249,6 +249,45 @@ namespace asp_pract.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("asp_pract.Domain.Entities.NewsItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DateAdded")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MetaDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaKeywords")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MetaTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subtitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TitleImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("UprovedByAdmin")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NewsItems");
+                });
+
             modelBuilder.Entity("asp_pract.Domain.Entities.ServiceItem", b =>
                 {
                     b.Property<Guid>("Id")
@@ -328,7 +367,7 @@ namespace asp_pract.Migrations
                         {
                             Id = new Guid("9245fe4a-d402-451c-b9ed-9c1a04247258"),
                             CodeWord = "PageIndex",
-                            DateAdded = new DateTime(2022, 11, 22, 17, 59, 33, 420, DateTimeKind.Utc).AddTicks(1029),
+                            DateAdded = new DateTime(2022, 11, 28, 8, 12, 5, 120, DateTimeKind.Utc).AddTicks(3432),
                             Text = "Зміст сторінки запомнюється адміністратором",
                             Title = "Головна"
                         },
@@ -336,7 +375,7 @@ namespace asp_pract.Migrations
                         {
                             Id = new Guid("9245fe4a-d402-451c-b9ed-9c1a04247369"),
                             CodeWord = "PageServices",
-                            DateAdded = new DateTime(2022, 11, 22, 17, 59, 33, 420, DateTimeKind.Utc).AddTicks(4204),
+                            DateAdded = new DateTime(2022, 11, 28, 8, 12, 5, 120, DateTimeKind.Utc).AddTicks(6431),
                             Text = "Зміст сторінки запомнюється адміністратором",
                             Title = "Послуги"
                         },
@@ -344,7 +383,7 @@ namespace asp_pract.Migrations
                         {
                             Id = new Guid("9245fe4a-d402-451c-b9ed-9c1a04247547"),
                             CodeWord = "PageContacts",
-                            DateAdded = new DateTime(2022, 11, 22, 17, 59, 33, 420, DateTimeKind.Utc).AddTicks(4312),
+                            DateAdded = new DateTime(2022, 11, 28, 8, 12, 5, 120, DateTimeKind.Utc).AddTicks(6563),
                             Text = "Зміст сторінки запомнюється адміністратором",
                             Title = "Контакти"
                         });

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace asp_pract.Migrations
 {
-    public partial class _initial : Migration
+    public partial class _initial2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,6 +44,26 @@ namespace asp_pract.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "NewsItems",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    TitleImagePath = table.Column<string>(nullable: true),
+                    MetaTitle = table.Column<string>(nullable: true),
+                    MetaDescription = table.Column<string>(nullable: true),
+                    MetaKeywords = table.Column<string>(nullable: true),
+                    DateAdded = table.Column<DateTime>(nullable: false),
+                    Title = table.Column<string>(nullable: false),
+                    Subtitle = table.Column<string>(nullable: true),
+                    Text = table.Column<string>(nullable: true),
+                    UprovedByAdmin = table.Column<bool>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NewsItems", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -194,21 +214,21 @@ namespace asp_pract.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "9245fe4a-d402-451c-b9ed-9c1a04247482", "7757c2e8-b17f-46e4-825f-fe0b1363f42b", "admin", "ADMIN" });
+                values: new object[] { "9245fe4a-d402-451c-b9ed-9c1a04247482", "ed97d02f-62b6-4267-a5fa-8f1289a03fa9", "admin", "ADMIN" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "9245fe4a-d402-451c-b9ed-9c1a04247481", 0, "239b39e8-6511-43c4-a307-dabd527f11b6", "ny@mail.com", true, false, null, "MY@MAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEKZs6Uc7sKOt42afLVQvALwOBDpJL0Wb00ClDxsHRV2YJVAUQ7i2T10JwF3J9OWgIA==", null, false, "", false, "admin" });
+                values: new object[] { "9245fe4a-d402-451c-b9ed-9c1a04247481", 0, "516a6eb6-8b33-416e-bb26-2b78e2296ad9", "ny@mail.com", true, false, null, "MY@MAIL.COM", "ADMIN", "AQAAAAEAACcQAAAAEOX/ABJURybWIFHzaSd2NnNfbflXjvZP6yF11d7cnt/QWsMYRdEpq2G78F4sNBVH5w==", null, false, "", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "TextFields",
                 columns: new[] { "Id", "CodeWord", "DateAdded", "MetaDescription", "MetaKeywords", "MetaTitle", "Subtitle", "Text", "Title", "TitleImagePath" },
                 values: new object[,]
                 {
-                    { new Guid("9245fe4a-d402-451c-b9ed-9c1a04247258"), "PageIndex", new DateTime(2022, 11, 22, 17, 59, 33, 420, DateTimeKind.Utc).AddTicks(1029), null, null, null, null, "Зміст сторінки запомнюється адміністратором", "Головна", null },
-                    { new Guid("9245fe4a-d402-451c-b9ed-9c1a04247369"), "PageServices", new DateTime(2022, 11, 22, 17, 59, 33, 420, DateTimeKind.Utc).AddTicks(4204), null, null, null, null, "Зміст сторінки запомнюється адміністратором", "Послуги", null },
-                    { new Guid("9245fe4a-d402-451c-b9ed-9c1a04247547"), "PageContacts", new DateTime(2022, 11, 22, 17, 59, 33, 420, DateTimeKind.Utc).AddTicks(4312), null, null, null, null, "Зміст сторінки запомнюється адміністратором", "Контакти", null }
+                    { new Guid("9245fe4a-d402-451c-b9ed-9c1a04247258"), "PageIndex", new DateTime(2022, 11, 28, 8, 12, 5, 120, DateTimeKind.Utc).AddTicks(3432), null, null, null, null, "Зміст сторінки запомнюється адміністратором", "Головна", null },
+                    { new Guid("9245fe4a-d402-451c-b9ed-9c1a04247369"), "PageServices", new DateTime(2022, 11, 28, 8, 12, 5, 120, DateTimeKind.Utc).AddTicks(6431), null, null, null, null, "Зміст сторінки запомнюється адміністратором", "Послуги", null },
+                    { new Guid("9245fe4a-d402-451c-b9ed-9c1a04247547"), "PageContacts", new DateTime(2022, 11, 28, 8, 12, 5, 120, DateTimeKind.Utc).AddTicks(6563), null, null, null, null, "Зміст сторінки запомнюється адміністратором", "Контакти", null }
                 });
 
             migrationBuilder.InsertData(
@@ -272,6 +292,9 @@ namespace asp_pract.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "NewsItems");
 
             migrationBuilder.DropTable(
                 name: "ServiceItems");

@@ -35,6 +35,7 @@ namespace asp_pract
 
             services.AddTransient<ITextFieldsRepository, EFTextFieldsRepository>();
             services.AddTransient<IServiceItemsRepository, EFTextServiceItemsRepository>();
+            services.AddTransient<INewsItemRepository, EFNewsItemRepository>();
             services.AddTransient<DataManager>();
 
             services.AddDbContext<AppDbContext>(x => x.UseSqlServer(Config.ConectionString));

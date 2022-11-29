@@ -1,0 +1,31 @@
+﻿@model IQueryable<NewsItem>
+@{
+    string strTitle = "Панель адміністратора";
+    ViewBag.Title = strTitle;
+}
+
+<div>
+    <h2>@strTitle</h2>
+    @if (Model.Any())
+    {
+        <div>
+            @foreach (NewsItem entity in Model)
+            {
+            <div>
+
+                <a asp-area="Admin" asp-controller="NewsItems" asp-action="Uprove" asp-route-id="@entity.Id">редагувати</a>
+
+                <form style="display: inline-block;" id="form-@entity.Id" asp-area="Admin" asp-controller="NewsItems" asp-action="Delete" method="post">
+                    <input type="hidden" name="id" value="@entity.Id" />
+                    <a href="#" onclick="document.getElementById('form-@entity.Id').submit();">видалити</a>
+                </form>
+                <p>@entity.Title</p>
+                <br />
+                @*<a asp-area="" asp-controller="NewsItems" asp-action="Index" asp-route-id="@entity.Id">
+            @($"{entity.Title}")
+        </a>*@
+            </div>
+            }
+        </div>
+    }
+</div>

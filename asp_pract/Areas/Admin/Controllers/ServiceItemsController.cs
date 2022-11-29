@@ -4,11 +4,12 @@ using System;
 using asp_pract.Domain;
 using asp_pract.Domain.Entities;
 using asp_pract.Service;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using System.IO;
+
 
 namespace asp_pract.Controllers
 {

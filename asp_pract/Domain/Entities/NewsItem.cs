@@ -10,6 +10,8 @@ namespace asp_pract.Domain.Entities
     {
         [Required(ErrorMessage = "Введіть заголовок новини")]
         [Display(Name = "Заголовок новини")]
+        //[Unique(ErrorMessage = "This already exist !!")]
+        //Sql("ALTER TABLE MyTable ADD CONSTRAINT U_MyUniqueColumn UNIQUE(MyUniqueColumn)");
         public override string Title { get; set; }
 
         [Display(Name = "Підзаголовок")]
@@ -19,5 +21,10 @@ namespace asp_pract.Domain.Entities
         public override string Text { get; set; }
 
         public bool UprovedByAdmin { get; set; }
+
+        //[Display(Name = "Повідомлення для адміна")]
+        //public string MessageForAdmin { get; set; }
+
+
     }
 }
