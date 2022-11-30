@@ -10,4 +10,13 @@
 <div>
     <h1>Contacts here you are</h1>
     @Html.Raw(Model.Text)
+<div>
+    <h2>Як з нами зв'язатися?</h2>
+    <p>Написати на пошту:</p>
+    <p>@Config.CompanyEmail</p>
+    <p>Зателефонувати:</p>
+    <p>@Config.CompanyPhone</p>
+    <p>Прийти особисто:</p>
+    <p>@Config.Adress</p>
+</div>
 </div>

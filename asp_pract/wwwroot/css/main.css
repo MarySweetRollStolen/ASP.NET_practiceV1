@@ -1236,5 +1236,10 @@ input.form-loging-style {
     padding-left: 500px;
 }
 
+.img-block {
+    border: 5px solid #c9c3af;
+    width: 600px;
+}
+
 lleft {
 }

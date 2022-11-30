@@ -12,15 +12,15 @@
             {
                 @if(entity.UprovedByAdmin)
                 { 
-                <li>
-                    <a asp-area="" asp-controller="Services" asp-action="Index" asp-route-id="@entity.Id">
-                        <img src="~/images/@entity.TitleImagePath" alt="" class="left" />
-                    </a>
-                    <h4>@entity.Title</h4>
-                    <p>@entity.Subtitle</p>
-                    <br />
-                    <p>@entity.Text</p>
-                </li>
+            <li>
+                <a asp-area="" asp-controller="News" asp-action="Show" asp-route-id="@entity.Id">
+                    <img src="~/images/@entity.TitleImagePath" alt="" class="left" />
+                </a>
+                <h4>@entity.Title</h4>
+                <p>@entity.Subtitle</p>
+                <br />
+                @Html.Raw(entity.Text)
+            </li>
                 }
             }
         </ul>

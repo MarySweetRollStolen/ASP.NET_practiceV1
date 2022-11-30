@@ -31,6 +31,7 @@ namespace asp_pract.Areas.Admin.Controllers
                 dataManager.TextFields.SaveTextField(model);
                 return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
             }
+            dataManager.TextFields.SaveTextField(model);
             return View(model);
         }
         public IActionResult Index()

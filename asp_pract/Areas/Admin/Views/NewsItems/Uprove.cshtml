@@ -11,77 +11,78 @@
 
         <form asp-area="Admin" asp-controller="NewsItems" asp-action="Uprove" method="post" enctype="multipart/form-data">
 
-            <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="DateAdded" />
-            <input type="hidden" asp-for="TitleImagePath" />
+
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="DateAdded" />
+                <input type="hidden" asp-for="TitleImagePath" />
 
 
-            <div>
-                <p>Повідомлення від користувача:"Model.MessageForAdmin"</p>
-                @*<p>@Model.MessageForAdmin</p>*@
-            </div>
-
-            <div asp-validation-summary="All"></div>
-
-            <div class="form-loging-style">
-                <p id="titleIsUniqueMessage"></p>
-                <label asp-for="Title" ></label>
-                <br />
-                <input asp-for="Title" onfocus="ValidateIfUnique()" id="Title"/>
-                <span asp-validation-for="Title"></span>
-            </div>
-
-            <div class="form-loging-style">
-                <label asp-for="Subtitle"></label>
-                <br />
-                <input asp-for="Subtitle" />
-                <span asp-validation-for="Subtitle"></span>
-            </div>
-            <div class="form-loging-style">
-                <label asp-for="Text"></label>
-                <br />
-                <textarea asp-for="Text" name="Text" id="Text"></textarea>
-                <span asp-validation-for="Text"></span>
-            </div>
-
-            <div class="form-loging-style">
-                <label asp-for="TitleImagePath"></label>
-                <br />
-                <input type="file" name="titleImageFile" id="titleImageFile" />
                 <div>
-                    <img class="img-block" src="~/images/@Model.TitleImagePath" alt="photo"/>
+                    <p>Повідомлення від користувача:"Model.MessageForAdmin"</p>
+                    @*<p>@Model.MessageForAdmin</p>*@
                 </div>
-            </div>
 
-            <div class="form-loging-style">
-                <label asp-for="MetaTitle"></label>
-                <br />
-                <input asp-for="MetaTitle" />
-                <span asp-validation-for="MetaTitle"></span>
-            </div>
-            <div class="form-loging-style">
-                <label asp-for="MetaDescription"></label>
-                <br />
-                <input asp-for="MetaDescription" />
-                <span asp-validation-for="MetaDescription"></span>
-            </div>
-            <div class="form-loging-style">
-                <label asp-for="MetaKeywords"></label>
-                <br />
-                <input asp-for="MetaKeywords" />
-                <span asp-validation-for="MetaKeywords"></span>
-            </div>
-            <br>
-            <div>
-                <label asp-for="UprovedByAdmin"></label>
-                <input type="checkbox" asp-for="UprovedByAdmin" />
-                <span asp-validation-for="UprovedByAdmin"></span>
-            </div>
-            <br>
-            <input type="submit" value="Зберегти" />
+                <div asp-validation-summary="All"></div>
 
-        </form>
-    </div>
+                <div class="form-loging-style">
+                    <p id="titleIsUniqueMessage"></p>
+                    <label asp-for="Title"></label>
+                    <br />
+                    <input asp-for="Title" onfocus="ValidateIfUnique()" id="Title" />
+                    <span asp-validation-for="Title"></span>
+                </div>
+
+                <div class="form-loging-style">
+                    <label asp-for="Subtitle"></label>
+                    <br />
+                    <input asp-for="Subtitle" />
+                    <span asp-validation-for="Subtitle"></span>
+                </div>
+                <div class="form-loging-style">
+                    <label asp-for="Text"></label>
+                    <br />
+                    <textarea asp-for="Text" name="Text" id="Text"></textarea>
+                    <span asp-validation-for="Text"></span>
+                </div>
+
+                <div class="form-loging-style">
+                    <label asp-for="TitleImagePath"></label>
+                    <br />
+                    <input type="file" name="titleImageFile" id="titleImageFile" />
+                    <div>
+                        <img src="~/images/@Model.TitleImagePath" class="img-block" />
+                    </div>
+                </div>
+
+                <div class="form-loging-style">
+                    <label asp-for="MetaTitle"></label>
+                    <br />
+                    <input asp-for="MetaTitle" />
+                    <span asp-validation-for="MetaTitle"></span>
+                </div>
+                <div class="form-loging-style">
+                    <label asp-for="MetaDescription"></label>
+                    <br />
+                    <input asp-for="MetaDescription" />
+                    <span asp-validation-for="MetaDescription"></span>
+                </div>
+                <div class="form-loging-style">
+                    <label asp-for="MetaKeywords"></label>
+                    <br />
+                    <input asp-for="MetaKeywords" />
+                    <span asp-validation-for="MetaKeywords"></span>
+                </div>
+                <br>
+                <div>
+                    <label asp-for="UprovedByAdmin"></label>
+                    <input type="checkbox" asp-for="UprovedByAdmin" />
+                    <span asp-validation-for="UprovedByAdmin"></span>
+                </div>
+                <br>
+                <input type="submit" value="Зберегти" />
+
+            </form>
+</div>
 </div>
 
 <script>
@@ -90,22 +91,4 @@
         .catch(error => {
             console.error(error);
         });
-</script>
-<script>
-    function ValidateIfUnique() {
-        let formData = {
-            title: $("#Title").val()
-        }
-        $.ajax({
-            url: "Admin/NewsItems/IsTitleUnique",
-            type: "POST",
-            data: formData,
-            success: function (response) {
-                document.getElementById("titleIsUniqueMessage").innerHTML = response.responseText;
-            },
-            error: function (request, status, error) {
-                document.getElementById("titleIsUniqueMessage").innerHTML = response.responseText;
-            }
-        });
-    }
 </script>

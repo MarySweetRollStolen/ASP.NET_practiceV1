@@ -29,7 +29,7 @@ namespace asp_pract.Areas.Admin.Controllers
 
         public IActionResult Uprove(Guid id)
         {
-            var entity =  dataManager.ServiceItems.GetServiceItemById(id);
+            var entity = dataManager.NewsItems.GetNewsItemById(id);
             return View(entity);
 
         }
@@ -55,19 +55,19 @@ namespace asp_pract.Areas.Admin.Controllers
         }
 
 
-        [HttpPost]
-        public JsonResult IsTitleUnique(NewsItem oneNews)
-        {
-            List<string> listTitle = null;
-            foreach (NewsItem entity in dataManager.NewsItems.GetNewsItems())
-            {
-                listTitle.Add(entity.Title);
-            }
-            if (listTitle.Contains(oneNews.Title)) {
-                return Json("Iм'я не унікальне");
-            }
-            return Json("Iм'я унікальне");
-        }
+        //[HttpPost]
+        //public JsonResult IsTitleUnique(NewsItem oneNews)
+        //{
+        //    List<string> listTitle = null;
+        //    foreach (NewsItem entity in dataManager.NewsItems.GetNewsItems())
+        //    {
+        //        listTitle.Add(entity.Title);
+        //    }
+        //    if (listTitle.Contains(oneNews.Title)) {
+        //        return Json("Iм'я не унікальне");
+        //    }
+        //    return Json("Iм'я унікальне");
+        //}
 
 
         [HttpPost]

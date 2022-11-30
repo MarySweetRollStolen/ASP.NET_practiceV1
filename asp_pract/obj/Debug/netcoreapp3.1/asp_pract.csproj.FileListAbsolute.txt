@@ -177,3 +177,4 @@ D:\asp.net practice\asp_pract\asp_pract\obj\Debug\netcoreapp3.1\Razor\Views\News
 D:\asp.net practice\asp_pract\asp_pract\obj\Debug\netcoreapp3.1\Razor\Views\News\Advise.cshtml.g.cs
 D:\asp.net practice\asp_pract\asp_pract\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\NewsItems\Index.cshtml.g.cs
 D:\asp.net practice\asp_pract\asp_pract\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\NewsItems\Uprove.cshtml.g.cs
+D:\asp.net practice\asp_pract\asp_pract\obj\Debug\netcoreapp3.1\Razor\Views\News\Show.cshtml.g.cs

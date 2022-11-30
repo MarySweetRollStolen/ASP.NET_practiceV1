@@ -59,6 +59,11 @@ namespace asp_pract.Controllers
             return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
         }
 
+        public IActionResult Show(Guid id)
+        {
+            return View("Show", dataManager.NewsItems.GetNewsItemById(id));
+        }
+
         public IActionResult Privacy()
         {
             return View();

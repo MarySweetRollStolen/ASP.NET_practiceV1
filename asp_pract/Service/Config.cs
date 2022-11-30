@@ -13,5 +13,7 @@ namespace asp_pract.Service
         public static string CompanyPhone { get; set; }
         public static string CompanyPhoneShort { get; set; }
         public static string CompanyEmail { get; set; }
+        public static string Adress { get; set; }
+
     }
 }
