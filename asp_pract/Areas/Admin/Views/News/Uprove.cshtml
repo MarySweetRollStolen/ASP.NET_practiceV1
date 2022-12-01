@@ -1,0 +1,98 @@
+﻿@model NewsItem
+@{
+    string strTitle = "Підтвердити новину";
+    ViewBag.Title = strTitle;
+}
+<script src="~/js/ckeditor5-build-classic/ckeditor.js"></script>
+<div>
+    <h2>@strTitle</h2>
+    <div>
+
+        <div>
+            <p>Повідомлення від користувача: @Model.MessageForAdmin"</p>
+        </div>
+
+        <form asp-area="Admin" asp-controller="News" asp-action="Uprove" method="post" enctype="multipart/form-data">
+
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="DateAdded" />
+            <input type="hidden" asp-for="UserAdress" />
+            <input type="hidden" asp-for="MessageForAdmin" />
+            <input type="hidden" asp-for="TitleImagePath" />
+
+            <div asp-validation-summary="All"></div>
+
+            <div class="form-loging-style">
+                <label asp-for="Title"></label>
+                <br />
+                <input asp-for="Title" />
+                <span asp-validation-for="Title"></span>
+            </div>
+
+            <div class="form-loging-style">
+                <label asp-for="Subtitle"></label>
+                <br />
+                <input asp-for="Subtitle" />
+                <span asp-validation-for="Subtitle"></span>
+            </div>
+            <div class="form-loging-style">
+                <label asp-for="Text"></label>
+                <br />
+                <textarea asp-for="Text" name="Text" id="Text"></textarea>
+                <span asp-validation-for="Text"></span>
+            </div>
+
+            <div class="form-loging-style">
+                <label asp-for="TitleImagePath"></label>
+                <br />
+                <input type="file" name="titleImageFile" id="titleImageFile" />
+                <div>
+                    <img src="~/images/@Model.TitleImagePath" class="img-block" />
+                </div>
+            </div>
+
+            <div class="form-loging-style">
+                <label asp-for="MetaTitle"></label>
+                <br />
+                <input asp-for="MetaTitle" />
+                <span asp-validation-for="MetaTitle"></span>
+            </div>
+            <div class="form-loging-style">
+                <label asp-for="MetaDescription"></label>
+                <br />
+                <input asp-for="MetaDescription" />
+                <span asp-validation-for="MetaDescription"></span>
+            </div>
+            <div class="form-loging-style">
+                <label asp-for="MetaKeywords"></label>
+                <br />
+                <input asp-for="MetaKeywords" />
+                <span asp-validation-for="MetaKeywords"></span>
+            </div>
+            <br>
+            <div>
+                <label asp-for="UprovedByAdmin"></label>
+                <input type="checkbox" asp-for="UprovedByAdmin" />
+                <span asp-validation-for="UprovedByAdmin"></span>
+            </div>
+            <br>
+            <input type="submit" value="Зберегти" />
+
+        </form>
+
+        <p>@Model.UserAdress - пошта для відправки рецензії</p>
+        <form asp-area="Admin" asp-controller="News" asp-action="Review" method="post" enctype="multipart/form-data">
+
+            <input type="submit" />
+        </form>
+    </div>
+
+</div>
+
+<script>
+    ClassicEditor
+        .create(document.querySelector('#Text'))
+        .catch(error => {
+            console.error(error);
+        });
+</script>

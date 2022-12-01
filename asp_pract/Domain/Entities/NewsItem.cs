@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -10,8 +11,7 @@ namespace asp_pract.Domain.Entities
     {
         [Required(ErrorMessage = "Введіть заголовок новини")]
         [Display(Name = "Заголовок новини")]
-        //[Unique(ErrorMessage = "This already exist !!")]
-        //Sql("ALTER TABLE MyTable ADD CONSTRAINT U_MyUniqueColumn UNIQUE(MyUniqueColumn)");
+        [Remote(action: "CheckTitle", controller: "News", ErrorMessage="Новина з такою назвою вже існує!")]
         public override string Title { get; set; }
 
         [Display(Name = "Підзаголовок")]
@@ -22,8 +22,11 @@ namespace asp_pract.Domain.Entities
 
         public bool UprovedByAdmin { get; set; }
 
-        //[Display(Name = "Повідомлення для адміна")]
-        //public string MessageForAdmin { get; set; }
+        [Display(Name = "Повідомлення для адміна")]
+        public string MessageForAdmin { get; set; }
+
+        [Display(Name = "Пошта для фідбеку про рецензію новини")]
+        public string UserAdress { get; set; }
 
 
     }

@@ -9,6 +9,7 @@ namespace asp_pract.Domain.Repositories.Abstract
     public interface INewsItemRepository
     {
         IQueryable<NewsItem> GetNewsItems();
+        IQueryable<NewsItem> GetUprovedNewsItems();
         NewsItem GetNewsItemById(Guid id);
         void SaveNewsItem(NewsItem entity);
         void DeleteNewsItem(Guid id);

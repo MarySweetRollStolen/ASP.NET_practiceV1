@@ -13,11 +13,11 @@ using System.Threading.Tasks;
 namespace asp_pract.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class NewsItemsController : Controller
+    public class NewsController : Controller
     {
         private readonly DataManager dataManager;
         private readonly IWebHostEnvironment hostingEnviroment;
-        public NewsItemsController(DataManager dataManager, IWebHostEnvironment hostingEnviroment)
+        public NewsController(DataManager dataManager, IWebHostEnvironment hostingEnviroment)
         {
             this.dataManager = dataManager;
             this.hostingEnviroment = hostingEnviroment;
@@ -47,34 +47,31 @@ namespace asp_pract.Areas.Admin.Controllers
                         titleImageFile.CopyTo(stream);
                     }
                 }
-
+                //model.UprovedByAdmin = true;
                 dataManager.NewsItems.SaveNewsItem(model);
-                return RedirectToAction(nameof(NewsItemsController.Index), nameof(NewsItemsController).CutController());
+                return RedirectToAction(nameof(NewsController.Index), nameof(NewsController).CutController());
             }
             return View(model);
         }
 
 
-        //[HttpPost]
-        //public JsonResult IsTitleUnique(NewsItem oneNews)
-        //{
-        //    List<string> listTitle = null;
-        //    foreach (NewsItem entity in dataManager.NewsItems.GetNewsItems())
-        //    {
-        //        listTitle.Add(entity.Title);
-        //    }
-        //    if (listTitle.Contains(oneNews.Title)) {
-        //        return Json("Iм'я не унікальне");
-        //    }
-        //    return Json("Iм'я унікальне");
-        //}
-
+        [AcceptVerbs("Get", "Post")]
+        public IActionResult CheckTitle(string title)
+        {
+            foreach (NewsItem news in dataManager.NewsItems.GetNewsItems())
+            {
+                if(news.UprovedByAdmin == true)
+                if (title == news.Title)
+                    return Json(false);
+            }
+            return Json(true);
+        }
 
         [HttpPost]
         public IActionResult Delete(Guid id)
         {
             dataManager.NewsItems.DeleteNewsItem(id);
-            return RedirectToAction(nameof(NewsItemsController.Index), nameof(NewsItemsController).CutController());
+            return RedirectToAction(nameof(NewsController.Index), nameof(NewsController).CutController());
         }
     }
 }

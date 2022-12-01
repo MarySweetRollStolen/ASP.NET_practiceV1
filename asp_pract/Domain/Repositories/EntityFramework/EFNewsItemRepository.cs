@@ -19,10 +19,31 @@ namespace asp_pract.Domain.Repositories.EntityFramework
         {
             return context.NewsItems;
         }
+
+        public IQueryable<NewsItem> GetUprovedNewsItems()
+        {
+
+            foreach (NewsItem news in context.NewsItems)
+            {
+                if(news.UprovedByAdmin == true)
+                {
+
+                }
+            }
+            List<NewsItem> uprovedNewsItems = null;
+            foreach (NewsItem news in context.NewsItems)
+            {
+                if (news.UprovedByAdmin)
+                    uprovedNewsItems.Add(news);
+            }
+            return (IQueryable<NewsItem>)uprovedNewsItems;
+        }
+
         public NewsItem GetNewsItemById(Guid id)
         {
             return context.NewsItems.FirstOrDefault(x => x.Id == id);
         }
+
         public void SaveNewsItem(NewsItem entity)
         {
             if (entity.Id == default)

@@ -15,24 +15,22 @@
             <input type="hidden" asp-for="TitleImagePath" />
             <input type="hidden" asp-for="UprovedByAdmin" value=false />
 
-            @*<div class="form-loging-style">
-            <label asp-for="MessageForAdmin"></label>
-            <br />
-            <input asp-for="MessageForAdmin" />
-        </div>*@
-            <!--<div asp-validation-summary="All"></div>
+            <div class="form-loging-style">
+                <label asp-for="MessageForAdmin"> Додайте коментар адміну</label>
+                <br />
+                <input asp-for="MessageForAdmin" />
+            </div>
+            <div class="form-loging-style">
+                <label asp-for="UserAdress"> Ваша пошта для рецензії новини</label>
+                <br />
+                <input asp-for="UserAdress" />
+            </div>
+            <div asp-validation-summary="All"></div>
             <div class="form-loging-style">
                 <label asp-for="Title"></label>
                 <br />
                 <input asp-for="Title" />
                 <span asp-validation-for="Title"></span>
-            </div>-->
-
-            <div class="form-loging-style">
-                <label asp-for="Title"></label>
-                <br />
-                <input asp-for="Subtitle" />
-                <span asp-validation-for="Subtitle"></span>
             </div>
 
             <div class="form-loging-style">
@@ -42,10 +40,10 @@
                 <span asp-validation-for="Text"></span>
             </div>
             <div class="form-loging-style">
-            <label asp-for="TitleImagePath"></label>
-            <br />
-            <input type="file" name="titleImageFile" id="titleImageFile" />
-        </div>
+                <label asp-for="TitleImagePath"></label>
+                <br />
+                <input type="file" name="titleImageFile" id="titleImageFile" />
+            </div>
 
             <input type="submit" value="Зберегти" />
         </form>

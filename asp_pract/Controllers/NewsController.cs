@@ -59,6 +59,17 @@ namespace asp_pract.Controllers
             return RedirectToAction(nameof(HomeController.Index), nameof(HomeController).CutController());
         }
 
+        [AcceptVerbs("Get", "Post")]
+        public IActionResult CheckTitle(string title)
+        {
+            foreach(NewsItem news in dataManager.NewsItems.GetNewsItems())
+            {
+                if (title == news.Title)
+                    return Json(false);
+            }
+            return Json(true);
+        }
+
         public IActionResult Show(Guid id)
         {
             return View("Show", dataManager.NewsItems.GetNewsItemById(id));
