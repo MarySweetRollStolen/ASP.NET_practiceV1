@@ -9,6 +9,8 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Net.Mail;
+using System.Net;
 
 namespace asp_pract.Areas.Admin.Controllers
 {
@@ -65,6 +67,29 @@ namespace asp_pract.Areas.Admin.Controllers
                     return Json(false);
             }
             return Json(true);
+        }
+
+        [HttpPost]
+        public IActionResult Review(string userEmail, string letterSubject, string letterBody)
+        {
+            SendEmailAsync(userEmail, letterSubject, letterBody).GetAwaiter();
+            return RedirectToAction(nameof(NewsController.Index), nameof(NewsController).CutController());
+        }
+
+
+
+        private static async Task SendEmailAsync(string userEmail, string letterSubject, string letterBody)
+        {
+            MailAddress from = new MailAddress("maryna.sukhostavets@advantiss.com", "Maryna");
+            MailAddress to = new MailAddress(userEmail);
+            MailMessage m = new MailMessage(from, to);
+            m.Subject = letterSubject;
+            m.Body = letterBody;
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
+            smtp.Credentials = new NetworkCredential("maryna.sukhostavets@advantiss.com", "chain2701boy$");
+            smtp.EnableSsl = true;
+            await smtp.SendMailAsync(m);
+            Console.WriteLine("Письмо отправлено");
         }
 
         [HttpPost]

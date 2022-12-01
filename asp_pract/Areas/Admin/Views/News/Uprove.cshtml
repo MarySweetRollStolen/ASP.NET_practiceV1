@@ -77,14 +77,23 @@
             </div>
             <br>
             <input type="submit" value="Зберегти" />
-
         </form>
 
-        <p>@Model.UserAdress - пошта для відправки рецензії</p>
-        <form asp-area="Admin" asp-controller="News" asp-action="Review" method="post" enctype="multipart/form-data">
+        <br /><br />
+        <div>
+            <p>@Model.UserAdress - пошта для відправки рецензії</p>
+            <form asp-area="Admin" asp-controller="News" asp-action="Review" method="post" enctype="multipart/form-data">
+                <input type="hidden" id="UserEmail" name="UserEmail" value="@Model.UserAdress" />
+                <label for="subject">Заголовок листа</label><br>
+                <input type="text" placeholder="Рецензія для @Model.Title." name="LetterSubject" id="LetterSubject" value="@Model.Title"/><br />
+                <br />
+                <label for="body">Тіло листа</label><br>
+                <textarea id="LetterBody" name="LetterBody">Ваша новина @Model.Title була переглянута адміном нашого сайту</textarea><br />
+                <input type="submit" />
+            </form>
+        </div>
 
-            <input type="submit" />
-        </form>
+
     </div>
 
 </div>
@@ -92,6 +101,11 @@
 <script>
     ClassicEditor
         .create(document.querySelector('#Text'))
+        .catch(error => {
+            console.error(error);
+        });
+    ClassicEditor
+        .create(document.querySelector('#LetterBody'))
         .catch(error => {
             console.error(error);
         });
